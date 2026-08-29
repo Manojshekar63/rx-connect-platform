@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as VerifyOtpRouteImport } from './routes/verify-otp'
+import { Route as DashboardAdminRouteImport } from './routes/dashboard.admin'
+import { Route as DashboardCustomerRouteImport } from './routes/dashboard.customer'
+import { Route as DashboardHospitalRouteImport } from './routes/dashboard.hospital'
+import { Route as DashboardPharmaceuticalRouteImport } from './routes/dashboard.pharmaceutical'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyOtpRoute = VerifyOtpRouteImport.update({
+  id: '/verify-otp',
+  path: '/verify-otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardAdminRoute = DashboardAdminRouteImport.update({
+  id: '/dashboard/admin',
+  path: '/dashboard/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardCustomerRoute = DashboardCustomerRouteImport.update({
+  id: '/dashboard/customer',
+  path: '/dashboard/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardHospitalRoute = DashboardHospitalRouteImport.update({
+  id: '/dashboard/hospital',
+  path: '/dashboard/hospital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardPharmaceuticalRoute = DashboardPharmaceuticalRouteImport.update({
+  id: '/dashboard/pharmaceutical',
+  path: '/dashboard/pharmaceutical',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify-otp': typeof VerifyOtpRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/customer': typeof DashboardCustomerRoute
+  '/dashboard/hospital': typeof DashboardHospitalRoute
+  '/dashboard/pharmaceutical': typeof DashboardPharmaceuticalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify-otp': typeof VerifyOtpRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/customer': typeof DashboardCustomerRoute
+  '/dashboard/hospital': typeof DashboardHospitalRoute
+  '/dashboard/pharmaceutical': typeof DashboardPharmaceuticalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify-otp': typeof VerifyOtpRoute
+  '/dashboard/admin': typeof DashboardAdminRoute
+  '/dashboard/customer': typeof DashboardCustomerRoute
+  '/dashboard/hospital': typeof DashboardHospitalRoute
+  '/dashboard/pharmaceutical': typeof DashboardPharmaceuticalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify-otp'
+    | '/dashboard/admin'
+    | '/dashboard/customer'
+    | '/dashboard/hospital'
+    | '/dashboard/pharmaceutical'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify-otp'
+    | '/dashboard/admin'
+    | '/dashboard/customer'
+    | '/dashboard/hospital'
+    | '/dashboard/pharmaceutical'
+  id:
+    | '__root__'
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify-otp'
+    | '/dashboard/admin'
+    | '/dashboard/customer'
+    | '/dashboard/hospital'
+    | '/dashboard/pharmaceutical'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  VerifyOtpRoute: typeof VerifyOtpRoute
+  DashboardAdminRoute: typeof DashboardAdminRoute
+  DashboardCustomerRoute: typeof DashboardCustomerRoute
+  DashboardHospitalRoute: typeof DashboardHospitalRoute
+  DashboardPharmaceuticalRoute: typeof DashboardPharmaceuticalRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-otp': {
+      id: '/verify-otp'
+      path: '/verify-otp'
+      fullPath: '/verify-otp'
+      preLoaderRoute: typeof VerifyOtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/admin': {
+      id: '/dashboard/admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof DashboardAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/customer': {
+      id: '/dashboard/customer'
+      path: '/dashboard/customer'
+      fullPath: '/dashboard/customer'
+      preLoaderRoute: typeof DashboardCustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/hospital': {
+      id: '/dashboard/hospital'
+      path: '/dashboard/hospital'
+      fullPath: '/dashboard/hospital'
+      preLoaderRoute: typeof DashboardHospitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/pharmaceutical': {
+      id: '/dashboard/pharmaceutical'
+      path: '/dashboard/pharmaceutical'
+      fullPath: '/dashboard/pharmaceutical'
+      preLoaderRoute: typeof DashboardPharmaceuticalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  VerifyOtpRoute: VerifyOtpRoute,
+  DashboardAdminRoute: DashboardAdminRoute,
+  DashboardCustomerRoute: DashboardCustomerRoute,
+  DashboardHospitalRoute: DashboardHospitalRoute,
+  DashboardPharmaceuticalRoute: DashboardPharmaceuticalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
