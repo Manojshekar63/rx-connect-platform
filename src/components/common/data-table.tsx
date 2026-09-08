@@ -33,12 +33,12 @@ export function DataTable<T extends { id: string }>({
   }
 
   return (
-    <div className="overflow-x-auto rounded-2xl border border-border">
+    <div className="overflow-x-auto border border-border">
       <Table>
         <TableHeader>
-          <TableRow className="bg-muted/60">
+          <TableRow className="bg-muted/70">
             {columns.map((col) => (
-              <TableHead key={col.key} className={cn("whitespace-nowrap", col.className)}>
+              <TableHead key={col.key} className={cn("whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.1em]", col.className)}>
                 {col.header}
               </TableHead>
             ))}

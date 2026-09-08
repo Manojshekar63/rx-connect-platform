@@ -15,10 +15,10 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <section className={cn("glass-panel rounded-2xl p-5 sm:p-6", className)}>
-      <header className="mb-5 flex flex-wrap items-start justify-between gap-3">
+    <section className={cn("border border-border bg-card p-5 shadow-soft sm:p-6", className)}>
+      <header className="mb-5 flex flex-wrap items-start justify-between gap-3 border-b border-border pb-4">
         <div>
-          <h2 className="font-display text-lg font-semibold">{title}</h2>
+          <h2 className="font-display text-2xl">{title}</h2>
           {description ? (
             <p className="mt-1 text-sm text-muted-foreground">{description}</p>
           ) : null}
