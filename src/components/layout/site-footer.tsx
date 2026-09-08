@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Mail, Stethoscope, Twitter } from "lucide-react";
+import { Linkedin, Mail, Plus, Twitter } from "lucide-react";
 
 const columns = [
   {
@@ -13,15 +13,15 @@ const columns = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-card/60">
-      <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+    <footer className="border-t border-border bg-card">
+      <div className="mx-auto w-full max-w-[1400px] px-5 py-16 sm:px-8 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)]">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="gradient-brand-bg flex size-9 items-center justify-center rounded-xl text-primary-foreground">
-                <Stethoscope className="size-5" />
+              <span className="flex size-8 items-center justify-center bg-primary text-primary-foreground">
+                <Plus className="size-5" />
               </span>
-              <span className="font-display text-base font-semibold">
+              <span className="text-sm font-bold uppercase">
                 PharmaBridge <span className="text-primary">AI</span>
               </span>
             </Link>
@@ -33,7 +33,7 @@ export function SiteFooter() {
               {[Twitter, Linkedin, Mail].map((Icon, i) => (
                 <span
                   key={i}
-                  className="flex size-9 items-center justify-center rounded-xl border border-border text-muted-foreground"
+                  className="flex size-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   <Icon className="size-4" />
                 </span>
@@ -43,7 +43,7 @@ export function SiteFooter() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-sm font-semibold">{col.title}</h3>
+              <h3 className="editorial-label text-foreground">{col.title}</h3>
               <ul className="mt-4 space-y-2.5">
                 {col.items.map((item) => (
                   <li key={item}>
