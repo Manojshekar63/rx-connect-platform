@@ -25,14 +25,14 @@ export function StatCard({
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="glass-panel rounded-2xl p-5"
+      className="border border-border bg-card p-5 shadow-soft"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-medium text-muted-foreground">{label}</p>
-          <p className="mt-2 font-display text-3xl font-semibold tracking-tight">{value}</p>
+          <p className="mt-2 font-display text-4xl">{value}</p>
         </div>
-        <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <div className="flex size-10 items-center justify-center border border-primary/20 bg-primary/8 text-primary">
           <Icon className="size-5" />
         </div>
       </div>

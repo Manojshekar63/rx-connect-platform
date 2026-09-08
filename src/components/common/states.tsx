@@ -27,11 +27,11 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border px-6 py-14 text-center">
-      <div className="mb-4 flex size-12 items-center justify-center rounded-2xl bg-muted">
+    <div className="flex flex-col items-center justify-center border border-dashed border-border px-6 py-14 text-center">
+      <div className="mb-4 flex size-12 items-center justify-center border border-border bg-muted">
         <Icon className="size-6 text-muted-foreground" />
       </div>
-      <h3 className="text-base font-semibold">{title}</h3>
+      <h3 className="font-display text-xl">{title}</h3>
       <p className="mt-1 max-w-sm text-sm text-muted-foreground">{description}</p>
       {action ? <div className="mt-5">{action}</div> : null}
     </div>
@@ -48,7 +48,7 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-destructive/30 bg-destructive/5 px-6 py-12 text-center">
+    <div className="flex flex-col items-center justify-center border border-destructive/30 bg-destructive/5 px-6 py-12 text-center">
       <AlertTriangle className="mb-3 size-7 text-destructive" />
       <h3 className="text-base font-semibold">{title}</h3>
       <p className="mt-1 max-w-sm text-sm text-muted-foreground">{description}</p>

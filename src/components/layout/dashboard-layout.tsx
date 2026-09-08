@@ -53,10 +53,10 @@ export interface DashboardLayoutProps {
 function Brand() {
   return (
     <Link to="/" className="flex items-center gap-2.5">
-      <span className="gradient-brand-bg flex size-9 items-center justify-center rounded-xl text-primary-foreground shadow-soft">
+      <span className="flex size-9 items-center justify-center bg-primary text-primary-foreground shadow-soft">
         <Stethoscope className="size-5" />
       </span>
-      <span className="font-display text-base font-semibold tracking-tight">
+      <span className="text-sm font-bold uppercase">
         PharmaBridge <span className="text-primary">AI</span>
       </span>
     </Link>
@@ -76,10 +76,10 @@ function SidebarNav({ nav, roleLabel }: { nav: NavItem[]; roleLabel: string }) {
             key={item.label}
             type="button"
             className={cn(
-              "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+              "flex items-center gap-3 border-l-2 px-3 py-2.5 text-sm font-medium transition-colors",
               item.active
-                ? "bg-sidebar-primary/12 text-sidebar-primary"
-                : "text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                ? "border-sidebar-primary bg-sidebar-primary/8 text-sidebar-primary"
+                : "border-transparent text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
             )}
           >
             <item.icon className="size-4.5" />
@@ -92,7 +92,7 @@ function SidebarNav({ nav, roleLabel }: { nav: NavItem[]; roleLabel: string }) {
           </button>
         ))}
       </nav>
-      <div className="rounded-2xl border border-border bg-primary/5 p-4">
+       <div className="border border-border bg-primary/5 p-4">
         <ShieldCheck className="mb-2 size-5 text-secondary" />
         <p className="text-sm font-semibold">HIPAA-ready workspace</p>
         <p className="mt-1 text-xs text-muted-foreground">
@@ -190,14 +190,14 @@ export function DashboardLayout({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="gradient-hero-bg min-h-screen">
+    <div className="min-h-screen bg-background">
       <div className="mx-auto flex w-full max-w-[1600px]">
         <aside className="sticky top-0 hidden h-screen w-68 shrink-0 border-r border-sidebar-border bg-sidebar lg:block">
           <SidebarNav nav={nav} roleLabel={roleLabel} />
         </aside>
 
         <div className="min-w-0 flex-1">
-          <header className="sticky top-0 z-30 border-b border-border/70 bg-background/70 backdrop-blur-xl">
+          <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
             <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
               <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
                 <SheetTrigger asChild>
@@ -215,7 +215,7 @@ export function DashboardLayout({
                 <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Search medicines, orders, partners…"
-                  className="rounded-full pl-9"
+                    className="pl-9"
                   aria-label="Search"
                 />
               </div>
@@ -254,7 +254,7 @@ export function DashboardLayout({
               className="mb-6 flex flex-wrap items-end justify-between gap-4"
             >
               <div>
-                <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                <h1 className="font-display text-3xl sm:text-4xl">
                   {title}
                 </h1>
                 <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>

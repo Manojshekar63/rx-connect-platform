@@ -55,12 +55,13 @@ function RegisterPage() {
       <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
         <div className="grid grid-cols-2 gap-2">
           {accountTypes.map((t) => (
-            <button
+            <Button
               key={t.id}
               type="button"
+              variant="outline"
               onClick={() => setSelected(t.id)}
               className={cn(
-                "rounded-2xl border p-3 text-left transition-all",
+                "h-auto items-start justify-start whitespace-normal border p-3 text-left",
                 selected === t.id
                   ? "border-primary bg-primary/8 shadow-soft"
                   : "border-border hover:border-primary/40",
@@ -74,7 +75,7 @@ function RegisterPage() {
               />
               <p className="text-sm font-semibold">{t.label}</p>
               <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">{t.blurb}</p>
-            </button>
+            </Button>
           ))}
         </div>
 

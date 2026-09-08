@@ -94,7 +94,7 @@ function UploadPrescriptionDialog() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="file">Prescription file</Label>
-            <div className="flex flex-col items-center rounded-2xl border border-dashed border-border px-4 py-8 text-center">
+            <div className="flex flex-col items-center border border-dashed border-border px-4 py-8 text-center">
               <FileUp className="mb-2 size-6 text-muted-foreground" />
               <p className="text-sm font-medium">Drop a PDF or photo here</p>
               <p className="text-xs text-muted-foreground">Max 10 MB · JPG, PNG or PDF</p>
@@ -175,7 +175,7 @@ function CustomerDashboard() {
         <Panel title="Prescriptions" description="Verified by our pharmacist team">
           <ul className="space-y-3">
             {prescriptions.map((p) => (
-              <li key={p.id} className="rounded-2xl border border-border p-4">
+              <li key={p.id} className="border border-border p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-sm font-semibold">{p.doctor}</p>
