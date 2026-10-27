@@ -45,7 +45,7 @@ export interface Prescription {
   clinic: string;
   uploaded: string;
   items: number;
-  status: "verified" | "reviewing" | "rejected";
+  status: "verified" | "reviewing" | "rejected" | "expired";
 }
 
 export const medicines: Medicine[] = [
@@ -283,6 +283,14 @@ export const prescriptions: Prescription[] = [
     items: 4,
     status: "verified",
   },
+  {
+    id: "RX-2205",
+    doctor: "Dr. Hannah Weiss",
+    clinic: "Meadow Health Store",
+    uploaded: "2026-05-30",
+    items: 2,
+    status: "expired",
+  },
 ];
 
 export const demandTrend = [
@@ -477,4 +485,100 @@ export const wardBreakdown: Ward[] = [
   { name: "General surgery", beds: 42, occupied: 31, coverage: 71 },
   { name: "Oncology", beds: 30, occupied: 19, coverage: 64 },
   { name: "Paediatrics", beds: 28, occupied: 12, coverage: 41 },
+];
+
+/* ------------------------- Customer workspace data ------------------------- */
+
+export interface CatalogMedicine {
+  id: string;
+  name: string;
+  salt: string;
+  dosage: string;
+  manufacturer: string;
+  price: number;
+  status: "in-stock" | "low-stock" | "out-of-stock";
+  category: string;
+}
+
+export const customerCatalog: CatalogMedicine[] = [
+  { id: "MED-1041", name: "Amoxicillin 500 mg", salt: "Amoxicillin trihydrate", dosage: "Capsule · 500 mg", manufacturer: "Nordis Pharma", price: 8.4, status: "in-stock", category: "Antibiotics" },
+  { id: "MED-1077", name: "Azithromycin 250 mg", salt: "Azithromycin dihydrate", dosage: "Tablet · 250 mg", manufacturer: "Corvea Labs", price: 11.2, status: "in-stock", category: "Antibiotics" },
+  { id: "MED-1093", name: "Cephalexin 500 mg", salt: "Cefalexin monohydrate", dosage: "Capsule · 500 mg", manufacturer: "Nordis Pharma", price: 9.6, status: "low-stock", category: "Antibiotics" },
+  { id: "MED-1088", name: "Metformin 850 mg", salt: "Metformin hydrochloride", dosage: "Tablet · 850 mg", manufacturer: "Corvea Labs", price: 5.1, status: "in-stock", category: "Diabetes" },
+  { id: "MED-1156", name: "Glimepiride 2 mg", salt: "Glimepiride", dosage: "Tablet · 2 mg", manufacturer: "Meridian Health", price: 7.3, status: "in-stock", category: "Diabetes" },
+  { id: "MED-1123", name: "Insulin Glargine", salt: "Insulin glargine", dosage: "Injection · 100 IU/mL", manufacturer: "Helvex Biotech", price: 46.75, status: "out-of-stock", category: "Diabetes" },
+  { id: "MED-1250", name: "Paracetamol 650 mg", salt: "Acetaminophen", dosage: "Tablet · 650 mg", manufacturer: "Corvea Labs", price: 2.35, status: "in-stock", category: "Pain Relief" },
+  { id: "MED-1261", name: "Ibuprofen 400 mg", salt: "Ibuprofen", dosage: "Tablet · 400 mg", manufacturer: "Meridian Health", price: 3.8, status: "in-stock", category: "Pain Relief" },
+  { id: "MED-1275", name: "Naproxen 250 mg", salt: "Naproxen sodium", dosage: "Tablet · 250 mg", manufacturer: "Nordis Pharma", price: 4.9, status: "low-stock", category: "Pain Relief" },
+  { id: "MED-1204", name: "Atorvastatin 20 mg", salt: "Atorvastatin calcium", dosage: "Tablet · 20 mg", manufacturer: "Meridian Health", price: 9.9, status: "in-stock", category: "Cardiac" },
+  { id: "MED-1218", name: "Amlodipine 5 mg", salt: "Amlodipine besylate", dosage: "Tablet · 5 mg", manufacturer: "Corvea Labs", price: 4.2, status: "in-stock", category: "Cardiac" },
+  { id: "MED-1226", name: "Losartan 50 mg", salt: "Losartan potassium", dosage: "Tablet · 50 mg", manufacturer: "Helvex Biotech", price: 6.4, status: "in-stock", category: "Cardiac" },
+  { id: "MED-1301", name: "Vitamin D3 60k IU", salt: "Cholecalciferol", dosage: "Sachet · 60,000 IU", manufacturer: "CareLine Health", price: 3.2, status: "in-stock", category: "Vitamins" },
+  { id: "MED-1315", name: "Vitamin B12 1500 mcg", salt: "Methylcobalamin", dosage: "Tablet · 1500 mcg", manufacturer: "CareLine Health", price: 5.6, status: "in-stock", category: "Vitamins" },
+  { id: "MED-1320", name: "Daily Multivitamin", salt: "Multivitamin & minerals", dosage: "Tablet · 1 daily", manufacturer: "Meridian Health", price: 8.1, status: "in-stock", category: "Vitamins" },
+];
+
+export interface PrescriptionItem {
+  name: string;
+  dosage: string;
+  instructions: string;
+}
+
+export const prescriptionItems: Record<string, PrescriptionItem[]> = {
+  "RX-2291": [
+    { name: "Amoxicillin 500 mg", dosage: "1 capsule, 3× daily", instructions: "Take with food for 7 days. Complete the full course even if you feel better." },
+    { name: "Paracetamol 650 mg", dosage: "1 tablet, every 6 hours", instructions: "As needed for fever or pain. Maximum 4 tablets in 24 hours." },
+    { name: "Vitamin D3 60k IU", dosage: "1 sachet weekly", instructions: "Take after breakfast on the same day each week." },
+  ],
+  "RX-2274": [
+    { name: "Atorvastatin 20 mg", dosage: "1 tablet at bedtime", instructions: "Avoid grapefruit juice while taking this medicine." },
+    { name: "Salbutamol Inhaler", dosage: "2 puffs when needed", instructions: "Shake well before use and rinse your mouth after each use." },
+  ],
+  "RX-2240": [
+    { name: "Metformin 850 mg", dosage: "1 tablet, 2× daily", instructions: "Take with meals to reduce stomach upset." },
+    { name: "Insulin Glargine", dosage: "10 units nightly", instructions: "Inject under the skin at the same time each evening. Rotate sites." },
+    { name: "Vitamin B12 1500 mcg", dosage: "1 tablet daily", instructions: "Dissolve under the tongue before breakfast." },
+    { name: "Aspirin 75 mg", dosage: "1 tablet in the morning", instructions: "Take after food. Do not stop without consulting your doctor." },
+  ],
+  "RX-2205": [
+    { name: "Cetirizine 10 mg", dosage: "1 tablet daily", instructions: "This prescription has expired — ask your doctor to renew it." },
+    { name: "Paracetamol 650 mg", dosage: "1 tablet, every 6 hours", instructions: "As needed for pain." },
+  ],
+};
+
+export interface CustomerDelivery {
+  id: string;
+  item: string;
+  carrier: string;
+  eta: string;
+  placed: string;
+  /** 0 = Order Confirmed, 1 = Packed, 2 = Out for Delivery, 3 = Delivered */
+  stage: 0 | 1 | 2 | 3;
+}
+
+export const customerDeliveries: CustomerDelivery[] = [
+  {
+    id: "TRK-88214",
+    item: "Amoxicillin 500 mg × 21",
+    carrier: "Swift Medical Logistics",
+    eta: "Oct 28, 18:30",
+    placed: "Oct 26",
+    stage: 2,
+  },
+  {
+    id: "TRK-88167",
+    item: "Metformin 850 mg × 60",
+    carrier: "MedFreight Lines",
+    eta: "Oct 30, 12:00",
+    placed: "Oct 27",
+    stage: 1,
+  },
+  {
+    id: "TRK-88090",
+    item: "Salbutamol Inhaler × 1",
+    carrier: "Swift Medical Logistics",
+    eta: "Delivered Oct 22",
+    placed: "Oct 20",
+    stage: 3,
+  },
 ];
