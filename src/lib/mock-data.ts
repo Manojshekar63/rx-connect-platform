@@ -582,3 +582,63 @@ export const customerDeliveries: CustomerDelivery[] = [
     stage: 3,
   },
 ];
+
+/* ------------------------ Pharmaceutical workspace data ------------------------ */
+
+export interface ProductionLine {
+  id: string;
+  name: string;
+  focus: string;
+  /** Utilisation percentage */
+  capacity: number;
+  activeBatches: number;
+  outputRate: string;
+  health: "optimal" | "watch" | "maintenance";
+}
+
+export const productionLines: ProductionLine[] = [
+  {
+    id: "line-a",
+    name: "Line A — Solid dose",
+    focus: "Tablets & capsules",
+    capacity: 88,
+    activeBatches: 2,
+    outputRate: "12,400 units/hr",
+    health: "optimal",
+  },
+  {
+    id: "line-b",
+    name: "Line B — Injectables",
+    focus: "Vials & ampoules",
+    capacity: 72,
+    activeBatches: 1,
+    outputRate: "3,200 units/hr",
+    health: "watch",
+  },
+  {
+    id: "line-c",
+    name: "Line C — Inhalers",
+    focus: "Metered dose inhalers",
+    capacity: 54,
+    activeBatches: 1,
+    outputRate: "1,850 units/hr",
+    health: "optimal",
+  },
+];
+
+export interface Batch {
+  id: string;
+  product: string;
+  targetUnits: number;
+  completion: string;
+  line: string;
+  status: "running" | "queued" | "quality-check";
+}
+
+export const batchSchedule: Batch[] = [
+  { id: "BAT-4412", product: "Amoxicillin 500 mg", targetUnits: 50000, completion: "Sep 06, 2026", line: "Line A — Solid dose", status: "running" },
+  { id: "BAT-4409", product: "Paracetamol 650 mg", targetUnits: 120000, completion: "Sep 02, 2026", line: "Line A — Solid dose", status: "quality-check" },
+  { id: "BAT-4415", product: "Insulin Glargine 100 IU/mL", targetUnits: 24000, completion: "Sep 11, 2026", line: "Line B — Injectables", status: "running" },
+  { id: "BAT-4418", product: "Salbutamol Inhaler 100 mcg", targetUnits: 18000, completion: "Sep 15, 2026", line: "Line C — Inhalers", status: "queued" },
+  { id: "BAT-4421", product: "Atorvastatin 20 mg", targetUnits: 60000, completion: "Sep 20, 2026", line: "Line A — Solid dose", status: "queued" },
+];
