@@ -34,7 +34,8 @@ export interface NavItem {
   label: string;
   icon: ComponentType<{ className?: string }>;
   active?: boolean;
-  badge?: string;
+  badge?: string | undefined;
+  onClick?: (() => void) | undefined;
 }
 
 export interface DashboardLayoutProps {
@@ -75,6 +76,7 @@ function SidebarNav({ nav, roleLabel }: { nav: NavItem[]; roleLabel: string }) {
           <button
             key={item.label}
             type="button"
+            onClick={item.onClick}
             className={cn(
               "flex items-center gap-3 border-l-2 px-3 py-2.5 text-sm font-medium transition-colors",
               item.active
@@ -272,10 +274,14 @@ export function DashboardLayout({
           <button
             key={item.label}
             type="button"
+            onClick={item.onClick}
             className={cn(
-              "flex flex-1 flex-col items-center gap-1 rounded-xl py-1.5 text-[11px] font-medium",
-              item.active ? "text-primary" : "text-muted-foreground",
+              "flex flex-1 flex-col items-center gap-1 rounded-lg py-1.5 text-[11px] font-medium transition-colors",
+              item.active
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:bg-muted",
             )}
+            aria-current={item.active ? "page" : undefined}
           >
             <item.icon className="size-5" />
             {item.label}
