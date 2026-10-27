@@ -413,3 +413,68 @@ export const testimonials = [
     role: "Patient caregiver, Boston",
   },
 ];
+
+export interface Shipment {
+  id: string;
+  item: string;
+  carrier: string;
+  origin: string;
+  eta: string;
+  quantity: number;
+  /** 0 = Placed, 1 = Dispatched, 2 = In transit, 3 = Delivered */
+  stage: 0 | 1 | 2 | 3;
+}
+
+export const shipments: Shipment[] = [
+  {
+    id: "SHP-2210",
+    item: "Insulin Glargine 100 IU/mL × 400",
+    carrier: "ColdChain Express",
+    origin: "Helvex Biotech — EU Hub",
+    eta: "Sep 02, 14:00",
+    quantity: 400,
+    stage: 0,
+  },
+  {
+    id: "SHP-2206",
+    item: "Sodium Chloride 0.9% IV × 1200",
+    carrier: "MedFreight Lines",
+    origin: "Corvea Labs — Plant 2",
+    eta: "Aug 30, 09:40",
+    quantity: 1200,
+    stage: 2,
+  },
+  {
+    id: "SHP-2190",
+    item: "Surgical Gloves (L) × 5000",
+    carrier: "Swift Medical Logistics",
+    origin: "Meridian Health — Warehouse B",
+    eta: "Sep 05, 11:00",
+    quantity: 5000,
+    stage: 1,
+  },
+  {
+    id: "SHP-2198",
+    item: "Ceftriaxone 1 g Vials × 800",
+    carrier: "ColdChain Express",
+    origin: "Nordis Pharma — Distribution",
+    eta: "Delivered Aug 24",
+    quantity: 800,
+    stage: 3,
+  },
+];
+
+export interface Ward {
+  name: string;
+  beds: number;
+  occupied: number;
+  coverage: number;
+}
+
+export const wardBreakdown: Ward[] = [
+  { name: "Intensive care", beds: 24, occupied: 22, coverage: 92 },
+  { name: "Emergency", beds: 36, occupied: 28, coverage: 78 },
+  { name: "General surgery", beds: 42, occupied: 31, coverage: 71 },
+  { name: "Oncology", beds: 30, occupied: 19, coverage: 64 },
+  { name: "Paediatrics", beds: 28, occupied: 12, coverage: 41 },
+];
