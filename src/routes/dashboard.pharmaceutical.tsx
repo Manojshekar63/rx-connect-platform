@@ -160,6 +160,20 @@ const BUYER_ADDRESS: Record<string, string> = {
   "Lakeview Clinic Network": "910 Lakeshore Drive, Madison, WI 53703",
 };
 
+interface FieldErrors {
+  name?: string;
+  generic?: string;
+  form?: string;
+  strength?: string;
+  price?: string;
+  stock?: string;
+  productId?: string;
+  lineId?: string;
+  target?: string;
+  start?: string;
+  completion?: string;
+}
+
 function statusFromStock(stock: number, parLevel: number): Medicine["status"] {
   if (stock <= 0) return "out-of-stock";
   if (stock < parLevel) return "low-stock";
@@ -771,7 +785,7 @@ function AddProductDialog({
   const [strength, setStrength] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   const reset = () => {
     setName("");
@@ -784,7 +798,7 @@ function AddProductDialog({
   };
 
   const handleSubmit = () => {
-    const next: Record<string, string> = {};
+    const next: FieldErrors = {};
     if (!name.trim()) next.name = "Product name is required";
     if (!generic.trim()) next.generic = "Generic compound is required";
     if (!form) next.form = "Choose a dosage form";
@@ -944,7 +958,7 @@ function ScheduleBatchDialog({
   const [target, setTarget] = useState("");
   const [start, setStart] = useState("");
   const [completion, setCompletion] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   const reset = () => {
     setProductId("");
@@ -956,7 +970,7 @@ function ScheduleBatchDialog({
   };
 
   const handleSubmit = () => {
-    const next: Record<string, string> = {};
+    const next: FieldErrors = {};
     if (!productId) next.productId = "Select a product";
     if (!lineId) next.lineId = "Assign a production line";
     if (!isPositiveInt(target)) next.target = "Enter a whole target above zero";
@@ -1104,7 +1118,7 @@ function EditProductDialog({
   const [generic, setGeneric] = useState("");
   const [strength, setStrength] = useState("");
   const [price, setPrice] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [loadedId, setLoadedId] = useState<string | null>(null);
 
   if (product && loadedId !== product.id) {
@@ -1118,7 +1132,7 @@ function EditProductDialog({
 
   const handleSubmit = () => {
     if (!product) return;
-    const next: Record<string, string> = {};
+    const next: FieldErrors = {};
     if (!name.trim()) next.name = "Product name is required";
     if (!generic.trim()) next.generic = "Generic compound is required";
     if (!strength.trim()) next.strength = "Strength is required";
