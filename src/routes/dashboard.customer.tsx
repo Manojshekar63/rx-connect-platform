@@ -8,6 +8,7 @@ import {
   Heart,
   Home,
   Package,
+  Pill,
   Search,
   ShoppingCart,
   Trash2,
@@ -789,7 +790,7 @@ function OverviewView({
           delta="8.2%"
           trend="down"
           hint="vs last year"
-          icon={Search}
+          icon={Pill}
           index={2}
         />
         <StatCard
