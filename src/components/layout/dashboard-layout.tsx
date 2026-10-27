@@ -34,8 +34,8 @@ export interface NavItem {
   label: string;
   icon: ComponentType<{ className?: string }>;
   active?: boolean;
-  badge?: string;
-  onClick?: () => void;
+  badge?: string | undefined;
+  onClick?: (() => void) | undefined;
 }
 
 export interface DashboardLayoutProps {
