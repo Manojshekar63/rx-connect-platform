@@ -25,6 +25,8 @@ export interface Medicine {
   status: StockStatus;
   batch: string;
   expiry: string;
+  category: string;
+  parLevel: number;
 }
 
 export interface Order {
@@ -59,6 +61,8 @@ export const medicines: Medicine[] = [
     status: "in-stock",
     batch: "AMX-24C",
     expiry: "2027-04-18",
+    category: "Antibiotics",
+    parLevel: 4000,
   },
   {
     id: "MED-1088",
@@ -72,6 +76,8 @@ export const medicines: Medicine[] = [
     status: "low-stock",
     batch: "MTF-19A",
     expiry: "2026-11-02",
+    category: "Diabetes care",
+    parLevel: 3000,
   },
   {
     id: "MED-1123",
@@ -85,6 +91,8 @@ export const medicines: Medicine[] = [
     status: "out-of-stock",
     batch: "ING-07B",
     expiry: "2026-09-30",
+    category: "Diabetes care",
+    parLevel: 1500,
   },
   {
     id: "MED-1190",
@@ -98,6 +106,8 @@ export const medicines: Medicine[] = [
     status: "in-stock",
     batch: "SLB-33F",
     expiry: "2026-10-15",
+    category: "Respiratory",
+    parLevel: 2000,
   },
   {
     id: "MED-1204",
@@ -111,6 +121,8 @@ export const medicines: Medicine[] = [
     status: "expiring",
     batch: "ATV-52D",
     expiry: "2026-09-12",
+    category: "Cardiovascular",
+    parLevel: 2500,
   },
   {
     id: "MED-1250",
@@ -124,6 +136,8 @@ export const medicines: Medicine[] = [
     status: "in-stock",
     batch: "PCM-91X",
     expiry: "2028-01-22",
+    category: "Other",
+    parLevel: 8000,
   },
 ];
 
