@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "motion/react";
 import {
   Activity,
@@ -700,7 +700,7 @@ function OverviewView({
 
 function UserDetailDrawer({ user, onClose }: { user: PlatformUser | null; onClose: () => void }) {
   if (!user) return null;
-  const rows: [string, React.ReactNode][] = [
+  const rows: [string, ReactNode][] = [
     ["User ID", user.id],
     ["Name", user.name],
     ["Email", user.email],
