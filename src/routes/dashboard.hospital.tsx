@@ -160,7 +160,7 @@ function FilterChip({
 }: {
   active: boolean;
   label: string;
-  count?: number;
+  count?: number | undefined;
   onClick: () => void;
 }) {
   return (
