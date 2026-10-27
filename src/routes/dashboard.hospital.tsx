@@ -729,14 +729,14 @@ function NewSupplyRequestDialog({
 
   const handleSubmit = () => {
     const next: Record<string, string> = {};
-    if (!medicineId) next.medicineId = "Select a medicine.";
+    if (!medicineId) next["medicineId"] = "Select a medicine.";
     const qty = Number(quantity);
     if (!quantity || Number.isNaN(qty) || qty <= 0 || !Number.isInteger(qty)) {
-      next.quantity = "Enter a whole quantity of at least 1.";
+      next["quantity"] = "Enter a whole quantity of at least 1.";
     }
-    if (!priority) next.priority = "Choose a priority level.";
-    if (!ward) next.ward = "Choose a destination ward.";
-    if (!supplier) next.supplier = "Choose a preferred supplier.";
+    if (!priority) next["priority"] = "Choose a priority level.";
+    if (!ward) next["ward"] = "Choose a destination ward.";
+    if (!supplier) next["supplier"] = "Choose a preferred supplier.";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
