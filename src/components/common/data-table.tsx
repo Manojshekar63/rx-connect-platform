@@ -22,11 +22,13 @@ export function DataTable<T extends { id: string }>({
   rows,
   emptyTitle = "Nothing here yet",
   emptyDescription = "Records will appear as soon as activity starts.",
+  onRowClick,
 }: {
   columns: Column<T>[];
   rows: T[];
   emptyTitle?: string;
   emptyDescription?: string;
+  onRowClick?: (row: T) => void;
 }) {
   if (rows.length === 0) {
     return <EmptyState title={emptyTitle} description={emptyDescription} />;
@@ -46,7 +48,11 @@ export function DataTable<T extends { id: string }>({
         </TableHeader>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id} className="hover:bg-muted/40">
+            <TableRow
+              key={row.id}
+              onClick={onRowClick ? () => onRowClick(row) : undefined}
+              className={cn(onRowClick && "cursor-pointer", "hover:bg-muted/40")}
+            >
               {columns.map((col) => (
                 <TableCell key={col.key} className={cn("whitespace-nowrap", col.className)}>
                   {col.cell(row)}
