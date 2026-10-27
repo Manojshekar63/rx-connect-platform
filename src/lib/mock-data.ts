@@ -358,47 +358,85 @@ export const notifications = [
   },
 ];
 
-export const platformUsers = [
-  {
-    id: "USR-3301",
-    name: "St. Anne's General Hospital",
-    type: "Hospital",
-    region: "Midwest",
-    status: "active",
-    joined: "2025-02-11",
-  },
-  {
-    id: "USR-3318",
-    name: "Nordis Pharma",
-    type: "Pharmaceutical",
-    region: "Global",
-    status: "active",
-    joined: "2024-11-04",
-  },
-  {
-    id: "USR-3352",
-    name: "Helvex Biotech",
-    type: "Pharmaceutical",
-    region: "EU",
-    status: "review",
-    joined: "2026-06-19",
-  },
-  {
-    id: "USR-3390",
-    name: "Marta Kowalski",
-    type: "Customer",
-    region: "Northeast",
-    status: "active",
-    joined: "2026-03-08",
-  },
-  {
-    id: "USR-3412",
-    name: "Lakeview Clinic Network",
-    type: "Hospital",
-    region: "West",
-    status: "suspended",
-    joined: "2025-08-30",
-  },
+export interface PlatformUser {
+  id: string;
+  name: string;
+  email: string;
+  role: "Customer" | "Hospital Staff" | "Pharma Rep";
+  region: string;
+  status: "active" | "suspended";
+  joined: string;
+}
+
+export const platformUsers: PlatformUser[] = [
+  { id: "USR-3301", name: "Dr. Elena Vasquez", email: "e.vasquez@stannes.org", role: "Hospital Staff", region: "Midwest", status: "active", joined: "2025-02-11" },
+  { id: "USR-3318", name: "Marcus Feld", email: "m.feld@nordispharma.com", role: "Pharma Rep", region: "Global", status: "active", joined: "2024-11-04" },
+  { id: "USR-3352", name: "Anna Keller", email: "a.keller@helvexbio.eu", role: "Pharma Rep", region: "EU", status: "active", joined: "2026-06-19" },
+  { id: "USR-3390", name: "Marta Kowalski", email: "marta.kowalski@gmail.com", role: "Customer", region: "Northeast", status: "active", joined: "2026-03-08" },
+  { id: "USR-3412", name: "Dr. Samuel Ortiz", email: "s.ortiz@lakeviewclinics.org", role: "Hospital Staff", region: "West", status: "suspended", joined: "2025-08-30" },
+  { id: "USR-3277", name: "Aisha Rahman", email: "aisha.rahman@outlook.com", role: "Customer", region: "Northeast", status: "active", joined: "2025-12-02" },
+  { id: "USR-3461", name: "Ingrid Solberg", email: "i.solberg@corvealabs.no", role: "Pharma Rep", region: "EU", status: "active", joined: "2026-01-14" },
+  { id: "USR-3488", name: "James Whitfield", email: "j.whitfield@northfieldmc.org", role: "Hospital Staff", region: "Northeast", status: "active", joined: "2026-04-22" },
+  { id: "USR-3502", name: "Daniel Okoye", email: "d.okoye@meridianhealth.com", role: "Pharma Rep", region: "Midwest", status: "suspended", joined: "2025-06-17" },
+  { id: "USR-3519", name: "Lucia Moreno", email: "lucia.moreno@gmail.com", role: "Customer", region: "West", status: "active", joined: "2026-07-30" },
+];
+
+export interface Organization {
+  id: string;
+  name: string;
+  type: "Hospital" | "Pharmaceutical";
+  licenseId: string;
+  region: string;
+  reps: number;
+  status: "active" | "review" | "suspended";
+  contact: string;
+  contactRole: string;
+  licenseExpiry: string;
+  documents: string[];
+}
+
+export const organisations: Organization[] = [
+  { id: "ORG-2201", name: "St. Anne's General Hospital", type: "Hospital", licenseId: "LIC-HTH-2291", region: "Midwest", reps: 4, status: "active", contact: "Dr. Elena Vasquez", contactRole: "Chief Pharmacist", licenseExpiry: "2027-05-14", documents: ["Drug Establishment License", "Hospital Accreditation"] },
+  { id: "ORG-2204", name: "Northfield Medical Center", type: "Hospital", licenseId: "LIC-HTH-2301", region: "Northeast", reps: 3, status: "active", contact: "James Whitfield", contactRole: "Procurement Lead", licenseExpiry: "2027-08-02", documents: ["Drug Establishment License", "Hospital Accreditation"] },
+  { id: "ORG-2210", name: "Nordis Pharma", type: "Pharmaceutical", licenseId: "LIC-PHA-1140", region: "Global", reps: 6, status: "active", contact: "Marcus Feld", contactRole: "VP Supply Chain", licenseExpiry: "2028-01-09", documents: ["Drug Establishment License", "GMP Certificate"] },
+  { id: "ORG-2216", name: "Corvea Labs", type: "Pharmaceutical", licenseId: "LIC-PHA-1287", region: "EU", reps: 3, status: "active", contact: "Ingrid Solberg", contactRole: "Regulatory Director", licenseExpiry: "2027-11-30", documents: ["Drug Establishment License", "GMP Certificate"] },
+  { id: "ORG-2222", name: "Riverside Pharmacy Group", type: "Hospital", licenseId: "LIC-HTH-2350", region: "West", reps: 1, status: "active", contact: "Nina Park", contactRole: "Pharmacy Director", licenseExpiry: "2027-02-19", documents: ["Drug Establishment License", "Pharmacy Board License"] },
+  { id: "ORG-2231", name: "Helvex Biotech", type: "Pharmaceutical", licenseId: "LIC-PHA-1402", region: "EU", reps: 1, status: "review", contact: "Anna Keller", contactRole: "QA Lead", licenseExpiry: "2027-09-27", documents: ["Drug Establishment License", "Board Certifications", "GMP Certificate"] },
+  { id: "ORG-2238", name: "Lakeview Clinic Network", type: "Hospital", licenseId: "LIC-HTH-2344", region: "West", reps: 2, status: "review", contact: "Dr. Samuel Ortiz", contactRole: "Medical Director", licenseExpiry: "2027-04-11", documents: ["Drug Establishment License", "Board Certifications"] },
+  { id: "ORG-2245", name: "Meridian Health", type: "Pharmaceutical", licenseId: "LIC-PHA-1319", region: "Northeast", reps: 2, status: "review", contact: "Daniel Okoye", contactRole: "Distribution Manager", licenseExpiry: "2027-03-22", documents: ["Drug Establishment License"] },
+];
+
+export interface AuditEvent {
+  id: string;
+  timestamp: string;
+  eventType: string;
+  actor: string;
+  risk: "Low" | "Medium" | "High";
+  detail: string;
+}
+
+export const auditEvents: AuditEvent[] = [
+  { id: "AUD-8841", timestamp: "2026-10-27 05:42", eventType: "Bulk Narcotic Order", actor: "Marcus Feld — Nordis Pharma", risk: "High", detail: "Controlled-substance order of 40,000 units flagged for DEA Form 222 verification before release." },
+  { id: "AUD-8839", timestamp: "2026-10-27 03:11", eventType: "Failed Login Attempt", actor: "Unknown (IP 203.0.113.44)", risk: "Medium", detail: "Nine consecutive failed attempts on a pharmacy rep account; temporary lock engaged automatically." },
+  { id: "AUD-8836", timestamp: "2026-10-26 21:56", eventType: "Prescription Verification Override", actor: "Dr. Elena Vasquez — St. Anne's", risk: "Medium", detail: "Pharmacist overrode an automated interaction warning for RX-2274; override reason was recorded." },
+  { id: "AUD-8831", timestamp: "2026-10-26 18:20", eventType: "Role Permission Change", actor: "Priya Raman — Platform", risk: "Medium", detail: "Warehouse operator role granted export rights for order manifests across two facilities." },
+  { id: "AUD-8827", timestamp: "2026-10-26 14:03", eventType: "Data Export", actor: "James Whitfield — Northfield", risk: "Low", detail: "Monthly inventory report exported as CSV (1.2 MB) to a verified facility address." },
+  { id: "AUD-8824", timestamp: "2026-10-26 09:47", eventType: "Failed Login Attempt", actor: "d.okoye@meridianhealth.com", risk: "Low", detail: "Two failed attempts before a successful sign-in from a newly registered device." },
+  { id: "AUD-8819", timestamp: "2026-10-25 23:31", eventType: "Bulk Narcotic Order", actor: "Lakeview Clinic Network", risk: "High", detail: "Scheduled controlled-substance order paused automatically pending licence verification." },
+];
+
+export interface GeneratedReport {
+  id: string;
+  type: string;
+  range: string;
+  format: "PDF" | "CSV";
+  generated: string;
+}
+
+export const reportHistory: GeneratedReport[] = [
+  { id: "REP-0141", type: "Prescription Compliance", range: "Last 30 Days", format: "PDF", generated: "Sep 27, 2026" },
+  { id: "REP-0140", type: "Network Health", range: "Last 7 Days", format: "CSV", generated: "Oct 01, 2026" },
+  { id: "REP-0139", type: "Organisation Audits", range: "Year to Date", format: "PDF", generated: "Oct 12, 2026" },
 ];
 
 export const testimonials = [
