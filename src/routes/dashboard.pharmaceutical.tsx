@@ -445,7 +445,8 @@ function OrderInspectionDrawer({
   const address = BUYER_ADDRESS[order.party] ?? "Address on file with the buyer facility";
 
   const idx = ORDER_FLOW.indexOf(order.status);
-  const nextStatus = idx >= 0 && idx < ORDER_FLOW.length - 1 ? ORDER_FLOW[idx + 1] : null;
+  const nextStatus: OrderStatus | null =
+    idx >= 0 && idx < ORDER_FLOW.length - 1 ? (ORDER_FLOW[idx + 1] ?? null) : null;
 
   const timeline = [
     { label: "Placed", reached: true },
@@ -1346,6 +1347,7 @@ function PharmaDashboard() {
     const idx = ORDER_FLOW.indexOf(current.status);
     if (idx < 0 || idx === ORDER_FLOW.length - 1) return;
     const nextStatus = ORDER_FLOW[idx + 1];
+    if (!nextStatus) return;
     setOrders((prev) =>
       prev.map((o) => (o.id === id ? { ...o, status: nextStatus } : o)),
     );
