@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { motion } from "motion/react";
 import {
   Activity,
@@ -1000,7 +1000,7 @@ function GenerateReportDialog({
     if (!generating || progress < 100 || finishedRef.current) return;
     finishedRef.current = true;
     const ext = format === "PDF" ? "pdf" : "csv";
-    onSubmit(scope, range, format);
+    onSubmit(scope, range, format as "PDF" | "CSV");
     toast.success(`Report ${scope}.${ext} generated and downloaded`, {
       description: `${range} · logged in compliance history`,
     });
